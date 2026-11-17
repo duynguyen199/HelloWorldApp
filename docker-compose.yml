@@ -1,0 +1,17 @@
+
+services:
+  expo:
+    build: .
+    container_name: hello-world-expo
+    ports:
+      - "8081:8081"
+    environment:
+      EXPO_NO_TELEMETRY: "1"
+      REACT_NATIVE_PACKAGER_HOSTNAME: "192.168.1.108"
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npx expo start --host lan --go --clear
+    stdin_open: true
+    tty: true
